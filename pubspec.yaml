@@ -1,5 +1,5 @@
 name: f3_wallet
-description: A new Flutter project.
+description: Decentralized crypto wallet supporting multisig.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
