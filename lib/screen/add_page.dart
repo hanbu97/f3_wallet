@@ -3,6 +3,7 @@ import 'package:f3_wallet/ffi/ffi.io.dart';
 import 'package:f3_wallet/model/storage_item.dart';
 import 'package:f3_wallet/screen/home_view.dart';
 import 'package:f3_wallet/utils/hivedb.dart';
+import 'package:f3_wallet/utils/hivedb_encrypted.dart';
 import 'package:f3_wallet/utils/secure_storeage.dart';
 import 'package:f3_wallet/utils/encryption.dart';
 import 'package:flutter/material.dart';
@@ -243,7 +244,8 @@ class _IntroPageState extends State<IntroPage> {
                       final StorageItem newItem = StorageItem(pkName, address);
 
                       await Hive.initFlutter();
-                      await db_insert(pkName, encrypted);
+                      // await db_insert(pkName, encrypted);
+                      await dbInsert(pkName, encrypted);
 
                       // to local transparent storage
                       _storageService.writeSecureData(newItem).then((value) {

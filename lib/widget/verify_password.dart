@@ -4,6 +4,7 @@ import 'package:f3_wallet/services/lotus_message.dart';
 import 'package:f3_wallet/shared/app_colors.dart';
 import 'package:f3_wallet/utils/encryption.dart';
 import 'package:f3_wallet/utils/hivedb.dart';
+import 'package:f3_wallet/utils/hivedb_encrypted.dart';
 import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
 
@@ -86,7 +87,8 @@ class _VerifyPasswordState extends State<VerifyPassword> {
             const VerticalDivider(color: Colors.grey),
             TextButton(
               onPressed: () async {
-                var private = await db_get(widget.name);
+                // var private = await db_get(widget.name);
+                var private = await dbGet(widget.name);
                 final privateKey = decryptFernet(_pasword, private);
                 final sig = await api.signMessageWithPrivateKey(
                     msg: widget.msg.item2, privateKey: privateKey);
