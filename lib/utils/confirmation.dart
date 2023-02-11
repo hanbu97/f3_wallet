@@ -58,7 +58,6 @@ void showConfirmationDialog(
     Tuple2<Map<String, Object?>, String> msg,
     Map<String, String> content,
     BuildContext context) {
-  // void _showConfirmationDialog() {
   showModalBottomSheet(
     context: context,
     builder: (context) {

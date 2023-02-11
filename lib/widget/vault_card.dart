@@ -1,8 +1,7 @@
 import 'package:f3_wallet/model/storage_item.dart';
 import 'package:f3_wallet/screen/account_page.dart';
-import 'package:f3_wallet/services/secure_storeage.dart';
+import 'package:f3_wallet/utils/secure_storeage.dart';
 import 'package:f3_wallet/shared/app_colors.dart';
-import 'package:f3_wallet/widget/edit_data_dialog.dart';
 import 'package:flutter/material.dart';
 // import 'package:secure_storage/models/storage_item.dart';
 // import 'package:secure_storage/services/storage_service.dart';
@@ -25,15 +24,6 @@ class _VaultCardState extends State<VaultCard> {
     return Padding(
       padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
       child: Container(
-          // decoration: BoxDecoration(
-          //     color: Colors.white,
-          //     borderRadius: BorderRadius.circular(16),
-          //     boxShadow: [
-          //       BoxShadow(
-          //           offset: const Offset(3, 3),
-          //           color: Colors.grey.shade300,
-          //           blurRadius: 5)
-          //     ]),
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(
               Radius.circular(15),

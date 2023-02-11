@@ -2,7 +2,7 @@ import 'package:f3_wallet/shared/app_colors.dart';
 import 'package:f3_wallet/widget/vault_card.dart';
 import 'package:flutter/material.dart';
 import '../model/storage_item.dart';
-import '../services/secure_storeage.dart';
+import '../utils/secure_storeage.dart';
 import 'package:f3_wallet/screen/add_page.dart';
 
 class MyHomePage extends StatefulWidget {
