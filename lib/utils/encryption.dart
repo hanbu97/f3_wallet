@@ -1,24 +1,6 @@
-import 'package:hive/hive.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
 
-const dbName = "keyBox";
 const fernetSalt = "f4e45b9a033ae3b1bd2b15ecea2a9810";
-
-Future<void> db_insert(dynamic key, dynamic value) async {
-  final encryptedBox = await Hive.openBox(
-    dbName,
-  );
-  encryptedBox.put(key, value);
-  return;
-}
-
-Future<dynamic> db_get(dynamic key) async {
-  final encryptedBox = await Hive.openBox(
-    dbName,
-  );
-
-  return encryptedBox.get(key);
-}
 
 String decryptFernet(String password, String input) {
   final padKey = password + fernetSalt;

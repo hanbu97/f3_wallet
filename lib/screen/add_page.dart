@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:f3_wallet/ffi/ffi.io.dart';
 import 'package:f3_wallet/model/storage_item.dart';
 import 'package:f3_wallet/screen/home_view.dart';
+import 'package:f3_wallet/utils/hivedb.dart';
 import 'package:f3_wallet/utils/secure_storeage.dart';
 import 'package:f3_wallet/utils/encryption.dart';
 import 'package:flutter/material.dart';
