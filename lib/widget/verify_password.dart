@@ -1,5 +1,4 @@
-import 'package:f3_wallet/ffi.io.dart';
-import 'package:f3_wallet/screen/account_page.dart';
+import 'package:f3_wallet/ffi/ffi.io.dart';
 import 'package:f3_wallet/screen/result_page.dart';
 import 'package:f3_wallet/services/lotus_message.dart';
 import 'package:f3_wallet/shared/app_colors.dart';

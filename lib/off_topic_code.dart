@@ -6,7 +6,7 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:f3_wallet/bridge_definitions.dart';
+import 'package:f3_wallet/ffi/bridge_definitions.dart';
 
 Widget buildPageUi(Uint8List? exampleImage, String? exampleText) {
   return MaterialApp(

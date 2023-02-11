@@ -1,21 +1,9 @@
-import 'dart:convert';
-
-import 'package:f3_wallet/ffi.io.dart';
 import 'package:f3_wallet/screen/account_page.dart';
-import 'package:f3_wallet/screen/error_page.dart';
 import 'package:f3_wallet/screen/loading_page.dart';
-import 'package:f3_wallet/services/lotus.dart';
-import 'package:f3_wallet/services/lotus_message.dart';
 import 'package:f3_wallet/services/lotus_result.dart';
 import 'package:f3_wallet/shared/app_colors.dart';
-import 'package:f3_wallet/shared/encryption.dart';
-import 'package:f3_wallet/widget/verify_password.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:encrypt/encrypt.dart' as encrypt;
-import 'package:tuple/tuple.dart';
 
 class MessageResultPage extends StatefulWidget {
   final String name;

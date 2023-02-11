@@ -1,18 +1,13 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:f3_wallet/ffi.io.dart';
+import 'package:f3_wallet/ffi/ffi.io.dart';
 import 'package:f3_wallet/model/storage_item.dart';
-import 'package:f3_wallet/screen/home_page.dart';
 import 'package:f3_wallet/screen/home_view.dart';
 import 'package:f3_wallet/services/secure_storeage.dart';
-import 'package:f3_wallet/shared/app_colors.dart';
 import 'package:f3_wallet/shared/encryption.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:slide_to_act/slide_to_act.dart';
-import 'dart:convert';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:encrypt/encrypt.dart' as encrypt;
 
 class IntroPage extends StatefulWidget {
   final bool isAdd;
