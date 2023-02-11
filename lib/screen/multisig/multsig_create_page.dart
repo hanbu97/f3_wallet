@@ -2,9 +2,7 @@ import 'package:f3_wallet/screen/qrcode_page.dart';
 import 'package:f3_wallet/services/lotus_message.dart';
 import 'package:f3_wallet/shared/app_colors.dart';
 import 'package:f3_wallet/utils/confirmation.dart';
-import 'package:f3_wallet/widget/verify_password.dart';
 import 'package:flutter/material.dart';
-import 'package:tuple/tuple.dart';
 
 class CreateMultisig extends StatefulWidget {
   final String address;
@@ -211,7 +209,6 @@ class _CreateMultisigState extends State<CreateMultisig> {
                             widget.address, _signers, _threshold);
 
                         // cofirm before sign
-                        // _showConfirmationDialog(msg);
                         showConfirmationDialog(
                             widget.address,
                             widget.name,

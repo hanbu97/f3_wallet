@@ -1,6 +1,5 @@
 import 'package:f3_wallet/services/lotus_message.dart';
 import 'package:f3_wallet/shared/app_colors.dart';
-import 'package:f3_wallet/utils/confirmation.dart';
 import 'package:f3_wallet/widget/verify_password.dart';
 import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
@@ -24,6 +23,141 @@ class _MultisigSendState extends State<MultisigSend> {
   String _sender = "";
   double _amount = 0;
   double accountBalance = 0;
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   _signers.add(widget.address);
+  // }
+
+  void _showVerifyPasswordDialog(
+      String name, String address, Tuple2<Map<String, Object?>, String> msg) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return VerifyPassword(
+          name: name,
+          address: address,
+          msg: msg,
+        );
+      },
+    );
+  }
+
+  void _showConfirmationDialog(Tuple2<Map<String, Object?>, String> msg) {
+    // void _showConfirmationDialog() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Scaffold(
+          backgroundColor: blueMain,
+          appBar: AppBar(
+            title: const Text("Transaction Details"),
+            centerTitle: true,
+            automaticallyImplyLeading: false,
+            backgroundColor: blueMain,
+          ),
+          body: Container(
+            height: 1000,
+            child: Column(
+              children: [
+                Container(),
+                // const SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 30),
+                  child: Text(
+                    '${_amount.toString()} FIL',
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  ),
+                ),
+                const SizedBox(height: 8),
+
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 5,
+                        child: Container(
+                            child: const Padding(
+                          padding: EdgeInsets.only(left: 15),
+                          child: Text(
+                            'Payer',
+                            // textBaseline: TextBaseline.alphabetic,
+                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                          ),
+                        )),
+                      ),
+                      Expanded(
+                        flex: 16,
+                        child: Container(
+                          child: Text(
+                            '${widget.address}',
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Divider(
+                  color: Colors.blueGrey,
+                  thickness: 1,
+                ),
+                const SizedBox(height: 20),
+
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 5,
+                        child: Container(
+                            child: const Padding(
+                          padding: EdgeInsets.only(left: 15),
+                          child: Text(
+                            'Receiver',
+                            // textBaseline: TextBaseline.alphabetic,
+                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                          ),
+                        )),
+                      ),
+                      Expanded(
+                        flex: 16,
+                        child: Text(
+                          _receiver,
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          bottomNavigationBar: Container(
+            margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  // primary: Colors.black,
+                  minimumSize: const Size.fromHeight(50), // NEW
+                  backgroundColor: yellowStartWallet),
+              onPressed: () {
+                _showVerifyPasswordDialog(widget.name, widget.address, msg);
+              },
+              child: const Text(
+                'Confirm Payment',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -169,17 +303,7 @@ class _MultisigSendState extends State<MultisigSend> {
                         final msg = await createMsigSendMessage(_sender,
                             _receiver, _amountBig.toString(), widget.address);
                         // cofirm before  sign
-                        showConfirmationDialog(
-                            widget.address,
-                            widget.name,
-                            '${_amount.toString()} FIL',
-                            msg,
-                            {
-                              'Payer': _sender,
-                              'Receiver': _receiver,
-                              'Singer': widget.address,
-                            },
-                            context);
+                        _showConfirmationDialog(msg);
                       },
                       child: const Text(
                         'Confirm',

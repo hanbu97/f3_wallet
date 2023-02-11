@@ -1,27 +1,161 @@
 import 'package:f3_wallet/services/lotus_message.dart';
 import 'package:f3_wallet/shared/app_colors.dart';
-import 'package:f3_wallet/utils/confirmation.dart';
 import 'package:f3_wallet/widget/verify_password.dart';
 import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
 
-class MultisigApprove extends StatefulWidget {
+class MultisigCancel extends StatefulWidget {
   final String address;
   final String name;
-  const MultisigApprove({
+  const MultisigCancel({
     super.key,
     required this.address,
     required this.name,
   });
 
   @override
-  State<MultisigApprove> createState() => _MultisigApproveState();
+  State<MultisigCancel> createState() => _MultisigCancelState();
 }
 
-class _MultisigApproveState extends State<MultisigApprove> {
+class _MultisigCancelState extends State<MultisigCancel> {
   final _formKey = GlobalKey<FormState>();
   int _txnid = -1;
   String _multisig = "";
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   _signers.add(widget.address);
+  // }
+
+  void _showVerifyPasswordDialog(
+      String name, String address, Tuple2<Map<String, Object?>, String> msg) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return VerifyPassword(
+          name: name,
+          address: address,
+          msg: msg,
+        );
+      },
+    );
+  }
+
+  void _showConfirmationDialog(
+      Tuple2<Map<String, Object?>, String> msg, String multisig) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Scaffold(
+          backgroundColor: blueMain,
+          appBar: AppBar(
+            title: const Text("Confirmation Details"),
+            centerTitle: true,
+            automaticallyImplyLeading: false,
+            backgroundColor: blueMain,
+          ),
+          body: Container(
+            height: 1000,
+            child: Column(
+              children: [
+                Container(),
+                // const SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 30),
+                  child: Text(
+                    'TxnID  ${_txnid.toString()}',
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  ),
+                ),
+                const SizedBox(height: 8),
+
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 5,
+                        child: Container(
+                            child: const Padding(
+                          padding: EdgeInsets.only(left: 15),
+                          child: Text(
+                            'Signer',
+                            // textBaseline: TextBaseline.alphabetic,
+                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                          ),
+                        )),
+                      ),
+                      Expanded(
+                        flex: 16,
+                        child: Container(
+                          child: Text(
+                            '${widget.address}',
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Divider(
+                  color: Colors.blueGrey,
+                  thickness: 1,
+                ),
+                const SizedBox(height: 20),
+
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 5,
+                        child: Container(
+                            child: const Padding(
+                          padding: EdgeInsets.only(left: 15),
+                          child: Text(
+                            'Multisig Account',
+                            // textBaseline: TextBaseline.alphabetic,
+                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                          ),
+                        )),
+                      ),
+                      Expanded(
+                        flex: 16,
+                        child: Text(
+                          multisig,
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          bottomNavigationBar: Container(
+            margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  // primary: Colors.black,
+                  minimumSize: const Size.fromHeight(50), // NEW
+                  backgroundColor: yellowStartWallet),
+              onPressed: () {
+                _showVerifyPasswordDialog(widget.name, widget.address, msg);
+              },
+              child: const Text(
+                'Confirm Payment',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +163,7 @@ class _MultisigApproveState extends State<MultisigApprove> {
         backgroundColor: blueMain,
         appBar: AppBar(
           backgroundColor: blueMain,
-          title: const Text('Multisig Approve'),
+          title: const Text('Multisig Cancel'),
           centerTitle: true,
         ),
         body: ListView(
@@ -123,20 +257,11 @@ class _MultisigApproveState extends State<MultisigApprove> {
                           minimumSize: const Size.fromHeight(50), // NEW
                           backgroundColor: yellowStartWallet),
                       onPressed: () async {
-                        final msg = await createMsigApproveMessage(
+                        final msg = await createMsigCancelMessage(
                             _multisig, _txnid, widget.address);
 
                         // cofirm before  sign
-                        showConfirmationDialog(
-                            widget.address,
-                            widget.name,
-                            'TxnID  ${_txnid.toString()}',
-                            msg,
-                            {
-                              'Signer': widget.address.toString(),
-                              'Multisig Account': _multisig,
-                            },
-                            context);
+                        _showConfirmationDialog(msg, _multisig);
                       },
                       child: const Text(
                         'Confirm',
