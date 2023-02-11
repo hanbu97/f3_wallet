@@ -404,53 +404,11 @@ class _AccountPageState extends State<AccountPage> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: _viewAll(title: 'Messages'),
                 ),
-                LiveList(
-                  showItemInterval: const Duration(milliseconds: 100),
-                  showItemDuration: const Duration(seconds: 1),
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  physics: const BouncingScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: _currency.length,
-                  itemBuilder: _buildAnimatedItem,
-                ),
               ],
             )),
       ),
     );
   }
-
-  Widget _buildAnimatedItem(
-    BuildContext context,
-    int index,
-    Animation<double> animation,
-  ) =>
-      FadeTransition(
-        opacity: Tween<double>(
-          begin: 0,
-          end: 1,
-        ).animate(animation),
-        child: SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(0, -0.1),
-            end: Offset.zero,
-          ).animate(animation),
-          child: Padding(
-            padding: const EdgeInsets.all(5),
-            child: AssetsCard(
-              title: _currency[index]['name'] +
-                  ' ' +
-                  '(' +
-                  _currency[index]["symbol"] +
-                  ')',
-              price: _currency[index]['symbol'],
-              logo: _currency[index]['logo'],
-              chart: 'chart',
-              rise: '\$5,017',
-              percent: '3.75%',
-            ),
-          ),
-        ),
-      );
 
   _sendReceive(BuildContext context,
       {required Icon icon,
