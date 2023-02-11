@@ -2,11 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:animate_do/animate_do.dart';
-import 'package:f3_wallet/off_topic_code.dart';
 import 'package:f3_wallet/screen/multsig_approve_page.dart';
 import 'package:f3_wallet/screen/multsig_cancel_page.dart';
 import 'package:f3_wallet/screen/multsig_create_page%20copy.dart';
-import 'package:f3_wallet/screen/multsig_cancel_page.dart';
 import 'package:f3_wallet/screen/home_view.dart';
 import 'package:f3_wallet/screen/multsig_send_page%20copy.dart';
 import 'package:f3_wallet/screen/result_page.dart';
@@ -14,16 +12,10 @@ import 'package:f3_wallet/screen/transfer_page.dart';
 import 'package:f3_wallet/services/lotus.dart';
 import 'package:f3_wallet/shared/app_colors.dart';
 import 'package:f3_wallet/widget/asset_card.dart';
-import 'package:f3_wallet/widget/sign_message.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:auto_animated/auto_animated.dart';
-import 'package:timer_builder/timer_builder.dart';
 
 class AccountPage extends StatefulWidget {
   final String address;

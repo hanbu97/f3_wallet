@@ -6,7 +6,7 @@ import 'dart:isolate';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart' hide Size;
-import 'package:f3_wallet/bridge_definitions.dart';
+import 'package:f3_wallet/ffi/bridge_definitions.dart';
 import 'package:f3_wallet/main.dart' as app;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
