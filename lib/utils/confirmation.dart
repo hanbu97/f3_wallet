@@ -100,7 +100,7 @@ void showConfirmationDialog(
               _showVerifyPasswordDialog(name, address, msg, context);
             },
             child: const Text(
-              'Confirm Payment',
+              'Confirm',
               style: TextStyle(fontSize: 18),
             ),
           ),
