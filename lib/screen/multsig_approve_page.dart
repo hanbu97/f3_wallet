@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:f3_wallet/services/lotus_message.dart';
 import 'package:f3_wallet/shared/app_colors.dart';
 import 'package:f3_wallet/widget/verify_password.dart';

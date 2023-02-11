@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:f3_wallet/services/lotus_message.dart';
 import 'package:f3_wallet/shared/app_colors.dart';
 import 'package:f3_wallet/widget/verify_password.dart';
@@ -47,7 +45,6 @@ class _MultisigCancelState extends State<MultisigCancel> {
 
   void _showConfirmationDialog(
       Tuple2<Map<String, Object?>, String> msg, String multisig) {
-    // void _showConfirmationDialog() {
     showModalBottomSheet(
       context: context,
       builder: (context) {
