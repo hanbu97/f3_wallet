@@ -6,19 +6,19 @@ import 'package:f3_wallet/widget/verify_password.dart';
 import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
 
-class Transfer extends StatefulWidget {
+class SingleSendPage extends StatefulWidget {
   final String address;
   final String name;
   final BuildContext accountCtx;
 
-  Transfer(
+  SingleSendPage(
       {required this.address, required this.name, required this.accountCtx});
 
   @override
-  _TransferState createState() => _TransferState();
+  _SingleSendPageState createState() => _SingleSendPageState();
 }
 
-class _TransferState extends State<Transfer> {
+class _SingleSendPageState extends State<SingleSendPage> {
   final _formKey = GlobalKey<FormState>();
   String? _receiver = '123';
   double _amount = 0;
@@ -181,7 +181,7 @@ class _TransferState extends State<Transfer> {
         backgroundColor: blueMain,
         appBar: AppBar(
           backgroundColor: blueMain,
-          title: Text('Transfer'),
+          title: Text('SingleSendPage'),
           centerTitle: true,
         ),
         body: ListView(

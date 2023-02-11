@@ -51,12 +51,11 @@ List<Widget> _getItems(
   return out;
 }
 
-void _showConfirmationDialog(
+void showConfirmationDialog(
     String address,
     String name,
     String? title,
     Tuple2<Map<String, Object?>, String> msg,
-    String multisig,
     Map<String, String> content,
     BuildContext context) {
   // void _showConfirmationDialog() {

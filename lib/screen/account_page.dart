@@ -8,7 +8,7 @@ import 'package:f3_wallet/screen/multsig_create_page%20copy.dart';
 import 'package:f3_wallet/screen/home_view.dart';
 import 'package:f3_wallet/screen/multsig_send_page%20copy.dart';
 import 'package:f3_wallet/screen/result_page.dart';
-import 'package:f3_wallet/screen/transfer_page.dart';
+import 'package:f3_wallet/screen/single_send_page.dart';
 import 'package:f3_wallet/services/lotus.dart';
 import 'package:f3_wallet/shared/app_colors.dart';
 import 'package:f3_wallet/widget/asset_card.dart';
@@ -431,7 +431,7 @@ class _AccountPageState extends State<AccountPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Transfer(
+                      builder: (context) => SingleSendPage(
                         address: address,
                         name: name,
                         accountCtx: context,
