@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import '../model/storage_item.dart';
 import '../services/secure_storeage.dart';
 import 'package:f3_wallet/screen/add_page.dart';
-// import 'package:secure_storage/widgets/add_data_dialog.dart';
-// import 'package:secure_storage/widgets/search_key_value_dialog.dart';
-// import 'package:secure_storage/widgets/vault_card.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;

@@ -1,20 +1,11 @@
 import 'dart:async';
 import 'dart:typed_data';
 
-import 'package:f3_wallet/screen/account_page.dart';
 import 'package:f3_wallet/screen/home_view.dart';
 import 'package:flutter/material.dart' hide Size;
-import 'ffi/bridge_definitions.dart';
-import 'package:f3_wallet/off_topic_code.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-
-// This file is "main.dart"
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
 
 import 'ffi/ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 export 'ffi/ffi.io.dart' if (dart.library.html) 'ffi.web.dart' show api;
@@ -35,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'F3 Wallet',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
